@@ -12,7 +12,6 @@
 
 namespace BetterBrief;
 
-use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\HiddenField;
@@ -162,7 +161,7 @@ class GoogleMapField extends FormField {
 		);
 
 		$jsOptions = array_replace_recursive($jsOptions, $this->options);
-		$this->setAttribute('data-settings', Convert::json_encode($jsOptions));
+		$this->setAttribute('data-settings', json_encode($jsOptions));
 		$this->requireDependencies();
 		return parent::Field($properties);
 	}
