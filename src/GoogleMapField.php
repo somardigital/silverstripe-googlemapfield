@@ -12,14 +12,14 @@
 
 namespace BetterBrief;
 
+use SilverStripe\Core\Convert;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormField;
-use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\TextField;
-use SilverStripe\View\Requirements;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataObjectInterface;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Core\Convert;
+use SilverStripe\View\Requirements;
 
 class GoogleMapField extends FormField {
 
@@ -162,7 +162,7 @@ class GoogleMapField extends FormField {
 		);
 
 		$jsOptions = array_replace_recursive($jsOptions, $this->options);
-		$this->setAttribute('data-settings', Convert::array2json($jsOptions));
+		$this->setAttribute('data-settings', Convert::json_encode($jsOptions));
 		$this->requireDependencies();
 		return parent::Field($properties);
 	}
